@@ -18,4 +18,9 @@ RSpec.describe 'With valid user:' do
     expect(page).to have_content("Password or email not recognized")
     expect(current_path).to eq('/login')
   end
+  it "can logout" do
+    visit '/logout'
+    expect(page).to have_content('Logged out')
+    expect(current_path).to eq('/login')
+  end
 end

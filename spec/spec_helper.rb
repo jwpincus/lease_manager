@@ -1,4 +1,6 @@
 require 'factory_bot'
+require 'simplecov'
+SimpleCov.start 'rails'
 RSpec.configure do |config|
 
   config.expect_with :rspec do |expectations|
