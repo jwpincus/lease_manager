@@ -1,10 +1,7 @@
 FactoryBot.define do
-  factory :post do
-    title "MyText"
-    body "MyText"
-  end
   factory :user do
-    name "test"
+    first_name "test"
+    last_name "last_test"
     email "test@email.com"
     password "password"
   end

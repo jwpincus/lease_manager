@@ -1,7 +1,8 @@
 <h1>Signup to play in the plyground!</h1>
 
 <%= form_for :user, url: '/users' do |f| %>
-  Name: <%= f.text_field :name %><br>
+  Name: <%= f.text_field :first_name %><br>
+  Name: <%= f.text_field :last_name %><br>
   Email: <%= f.text_field :email %><br>
   Password: <%= f.text_field :password %><br>
   Password Confirmation: <%= f.text_field :password_confirmation %><br>

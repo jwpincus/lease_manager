@@ -7,7 +7,7 @@ RSpec.describe 'With valid user:' do
     fill_in('email', with: @user.email)
     fill_in('password', with: @user.password)
     click_on('Log In')
-    expect(page).to have_content("Welcome back, Test!")
+    expect(page).to have_content("Welcome back, #{@user.name}!")
     expect(current_path).to eq('/')
   end
   it "can't login in with wrong password" do
