@@ -15,5 +15,13 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:email) }
     it { should validate_confirmation_of(:password) }
     it { should validate_uniqueness_of(:email) }
+    it "should have a role" do
+      user = create(:user)
+      expect(user.role).to eq('tenant')
+    end
+    it "should be able to be a manager" do
+      user = create(:manager)
+      expect(user.role).to eq('manager')
+    end
 
 end

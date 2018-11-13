@@ -4,6 +4,12 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, confirmation: true
   has_secure_password
+  enum role: [:tenant, :manager, :owner]
+  after_initialize :set_default_role, :if => :new_record?
+
+  def set_default_role
+    self.role ||= :user
+  end
   
   def name
     [first_name.capitalize, last_name.capitalize].join(' ')
