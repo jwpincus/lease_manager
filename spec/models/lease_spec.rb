@@ -20,4 +20,8 @@ RSpec.describe Lease, type: :model do
   it { should have_many(:tenants)}
   it { should validate_numericality_of(:payment_day).is_less_than_or_equal_to(31)}
   it { should validate_numericality_of(:payment_day).is_greater_than_or_equal_to(1)}
+  it "can figure out the payment date for shorter months" do
+    lease = Lease.new(payment_day: 31)
+    expect(lease.payment_day_this_month(2)).to eq(28)
+  end
 end

@@ -8,18 +8,9 @@ class Lease < ApplicationRecord
   has_one :owner, -> { where(role: 'owner')}, through: :lease_users, class_name: 'User'
   has_many :managers, -> { where(role: 'managers')}, through: :lease_users, class_name: 'User'
   has_many :tenants, -> { where(role: 'tenants')}, through: :lease_users, class_name: 'User'
+  
+  def payment_day_this_month(month = Date.today.month)
+    payment_day < Time.days_in_month(month) ? payment_day : Time.days_in_month(month)
+  end
+  
 end
-
-# has_many(
-#     :fulltime_enrollments, 
-#     -> { where(duration: 'full-time') }, 
-#     class_name: "ClassroomEnrollments"
-#   )
-#   has_many :fulltimers, :through => :fulltime_enrollments, :source => :user
-# 
-#   has_many(
-#     :parttime_enrollments, 
-#     -> { where(duration: 'part-time') }, 
-#     class_name: "ClassroomEnrollments"
-#   )
-  # has_many :parttimers, :through => :parttime_enrollments, :source => :user
