@@ -5,7 +5,9 @@ class Lease < ApplicationRecord
   validates :payment_day, presence: true, numericality: {greater_than_or_equal_to: 1, less_than_or_equal_to: 31}
   
   has_many :lease_users
-  has_one :owner, -> { where(role: 'owner')}, through: :lease_users, class_name: 'User'
+  
+  has_one :owner_user, class_name: 'LeaseUser'
+  has_one :owner, -> { where(role: 'owner')}, through: :owner_user, source: 'user'
   has_many :managers, -> { where(role: 'managers')}, through: :lease_users, class_name: 'User'
   has_many :tenants, -> { where(role: 'tenants')}, through: :lease_users, class_name: 'User'
   

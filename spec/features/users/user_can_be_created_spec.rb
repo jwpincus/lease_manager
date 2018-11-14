@@ -6,7 +6,7 @@ RSpec.feature 'On user creation:', type: :feature do
       fill_in("user_email", with: 'test@test.com')
       fill_in("user_password", with: 'password')
       fill_in("user_password_confirmation", with: 'password')
-      click_on("Take me to the playground!")
+      click_on("Signup")
 
       expect(User.last.first_name).to eq('test')
       expect(User.last.last_name).to eq('test_last')
@@ -19,7 +19,7 @@ RSpec.feature 'On user creation:', type: :feature do
       fill_in("user_email", with: 'test@test.com')
       fill_in("user_password", with: 'password')
       fill_in("user_password_confirmation", with: 'password')
-      click_on("Take me to the playground!")
+      click_on("Signup")
 
       expect(User.last).to eq(nil)
       expect(current_path).to eq('/signup')
@@ -31,7 +31,7 @@ RSpec.feature 'On user creation:', type: :feature do
       fill_in("user_email", with: 'test@test.com')
       fill_in("user_password", with: 'password')
       fill_in("user_password_confirmation", with: 'password_confirmation')
-      click_on("Take me to the playground!")
+      click_on("Signup")
 
       expect(User.last).to eq(nil)
       expect(current_path).to eq('/signup')

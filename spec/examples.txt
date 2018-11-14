@@ -1,28 +1,29 @@
-example_id                                             | status  | run_time        |
------------------------------------------------------- | ------- | --------------- |
-./spec/features/users/user_can_be_created_spec.rb[1:1] | passed  | 0.04262 seconds |
-./spec/features/users/user_can_be_created_spec.rb[1:2] | passed  | 0.02234 seconds |
-./spec/features/users/user_can_be_created_spec.rb[1:3] | passed  | 0.19126 seconds |
-./spec/features/users/user_can_sign_in_spec.rb[1:1]    | passed  | 0.02296 seconds |
-./spec/features/users/user_can_sign_in_spec.rb[1:2]    | passed  | 0.02027 seconds |
-./spec/features/users/user_can_sign_in_spec.rb[1:3]    | passed  | 0.0157 seconds  |
-./spec/helpers/leases_helper_spec.rb[1:1]              | pending | 0.00002 seconds |
-./spec/models/lease_spec.rb[1:1]                       | passed  | 0.02662 seconds |
-./spec/models/lease_spec.rb[1:2]                       | passed  | 0.00492 seconds |
-./spec/models/lease_spec.rb[1:3]                       | passed  | 0.00655 seconds |
-./spec/models/lease_spec.rb[1:4]                       | passed  | 0.00432 seconds |
-./spec/models/lease_spec.rb[1:5]                       | passed  | 0.00569 seconds |
-./spec/models/lease_spec.rb[1:6]                       | passed  | 0.00193 seconds |
-./spec/models/lease_spec.rb[1:7]                       | passed  | 0.01794 seconds |
-./spec/models/lease_spec.rb[1:8]                       | passed  | 0.00241 seconds |
-./spec/models/lease_spec.rb[1:9]                       | passed  | 0.01393 seconds |
-./spec/models/lease_spec.rb[1:10]                      | passed  | 0.01287 seconds |
-./spec/models/lease_spec.rb[1:11]                      | passed  | 0.00194 seconds |
-./spec/models/user_spec.rb[1:1]                        | passed  | 0.00326 seconds |
-./spec/models/user_spec.rb[1:2]                        | passed  | 0.0045 seconds  |
-./spec/models/user_spec.rb[1:3]                        | passed  | 0.00423 seconds |
-./spec/models/user_spec.rb[1:4]                        | passed  | 0.00581 seconds |
-./spec/models/user_spec.rb[1:5]                        | passed  | 0.01305 seconds |
-./spec/models/user_spec.rb[1:6]                        | passed  | 0.01829 seconds |
-./spec/models/user_spec.rb[1:7]                        | passed  | 0.00509 seconds |
-./spec/models/user_spec.rb[1:8]                        | passed  | 0.0063 seconds  |
+example_id                                                      | status  | run_time        |
+--------------------------------------------------------------- | ------- | --------------- |
+./spec/features/leases/owner_can_create_edit_lease_spec.rb[1:1] | passed  | 0.10767 seconds |
+./spec/features/users/user_can_be_created_spec.rb[1:1]          | passed  | 0.23504 seconds |
+./spec/features/users/user_can_be_created_spec.rb[1:2]          | passed  | 0.02477 seconds |
+./spec/features/users/user_can_be_created_spec.rb[1:3]          | passed  | 0.02392 seconds |
+./spec/features/users/user_can_sign_in_spec.rb[1:1]             | passed  | 0.02441 seconds |
+./spec/features/users/user_can_sign_in_spec.rb[1:2]             | passed  | 0.0332 seconds  |
+./spec/features/users/user_can_sign_in_spec.rb[1:3]             | passed  | 0.01692 seconds |
+./spec/helpers/leases_helper_spec.rb[1:1]                       | pending | 0.00001 seconds |
+./spec/models/lease_spec.rb[1:1]                                | passed  | 0.03699 seconds |
+./spec/models/lease_spec.rb[1:2]                                | passed  | 0.00417 seconds |
+./spec/models/lease_spec.rb[1:3]                                | passed  | 0.00473 seconds |
+./spec/models/lease_spec.rb[1:4]                                | passed  | 0.00331 seconds |
+./spec/models/lease_spec.rb[1:5]                                | passed  | 0.02278 seconds |
+./spec/models/lease_spec.rb[1:6]                                | passed  | 0.00201 seconds |
+./spec/models/lease_spec.rb[1:7]                                | passed  | 0.00202 seconds |
+./spec/models/lease_spec.rb[1:8]                                | passed  | 0.00142 seconds |
+./spec/models/lease_spec.rb[1:9]                                | passed  | 0.00913 seconds |
+./spec/models/lease_spec.rb[1:10]                               | passed  | 0.00967 seconds |
+./spec/models/lease_spec.rb[1:11]                               | passed  | 0.00296 seconds |
+./spec/models/user_spec.rb[1:1]                                 | passed  | 0.00319 seconds |
+./spec/models/user_spec.rb[1:2]                                 | passed  | 0.00548 seconds |
+./spec/models/user_spec.rb[1:3]                                 | passed  | 0.0056 seconds  |
+./spec/models/user_spec.rb[1:4]                                 | passed  | 0.00367 seconds |
+./spec/models/user_spec.rb[1:5]                                 | passed  | 0.01247 seconds |
+./spec/models/user_spec.rb[1:6]                                 | passed  | 0.01542 seconds |
+./spec/models/user_spec.rb[1:7]                                 | passed  | 0.00459 seconds |
+./spec/models/user_spec.rb[1:8]                                 | passed  | 0.00529 seconds |
