@@ -1,4 +1,4 @@
-RSpec.describe 'With valid user:' do
+RSpec.feature 'With valid user:', type: :feature do
   before :each do
     @user = create(:user)
   end

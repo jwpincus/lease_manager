@@ -1,4 +1,4 @@
-RSpec.describe 'On user creation:' do
+RSpec.feature 'On user creation:', type: :feature do
     it "can be created with valid parameters" do
       visit '/signup'
       fill_in("user_first_name", with: 'test')

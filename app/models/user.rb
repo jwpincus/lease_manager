@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :password, confirmation: true
   has_secure_password
   enum role: [:tenant, :manager, :owner]
-  after_initialize :set_default_role, :if => :new_record?
+  after_initialize :set_default_role, if: :new_record?
   has_many :lease_users
   has_many :leases, through: :lease_users
 

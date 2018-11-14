@@ -6,5 +6,6 @@
   Email: <%= f.text_field :email %><br>
   Password: <%= f.text_field :password %><br>
   Password Confirmation: <%= f.text_field :password_confirmation %><br>
-  <%= f.submit "Take me to the playground!" %>
+  Role: <%= f.select :role, User.roles.keys %><br>
+  <%= f.submit "Signup" %>
   <% end %>
