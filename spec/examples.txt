@@ -1,16 +1,27 @@
-example_id                                             | status | run_time        |
------------------------------------------------------- | ------ | --------------- |
-./spec/features/users/user_can_be_created_spec.rb[1:1] | passed | 0.17519 seconds |
-./spec/features/users/user_can_be_created_spec.rb[1:2] | passed | 0.02045 seconds |
-./spec/features/users/user_can_be_created_spec.rb[1:3] | passed | 0.02233 seconds |
-./spec/features/users/user_can_sign_in_spec.rb[1:1]    | passed | 0.04119 seconds |
-./spec/features/users/user_can_sign_in_spec.rb[1:2]    | passed | 0.01864 seconds |
-./spec/features/users/user_can_sign_in_spec.rb[1:3]    | passed | 0.01368 seconds |
-./spec/models/user_spec.rb[1:1]                        | passed | 0.00394 seconds |
-./spec/models/user_spec.rb[1:2]                        | passed | 0.00363 seconds |
-./spec/models/user_spec.rb[1:3]                        | passed | 0.00352 seconds |
-./spec/models/user_spec.rb[1:4]                        | passed | 0.00352 seconds |
-./spec/models/user_spec.rb[1:5]                        | passed | 0.01169 seconds |
-./spec/models/user_spec.rb[1:6]                        | passed | 0.02 seconds    |
-./spec/models/user_spec.rb[1:7]                        | passed | 0.00622 seconds |
-./spec/models/user_spec.rb[1:8]                        | passed | 0.01963 seconds |
+example_id                                             | status  | run_time        |
+------------------------------------------------------ | ------- | --------------- |
+./spec/features/users/user_can_be_created_spec.rb[1:1] | passed  | 0.03743 seconds |
+./spec/features/users/user_can_be_created_spec.rb[1:2] | passed  | 0.0322 seconds  |
+./spec/features/users/user_can_be_created_spec.rb[1:3] | passed  | 0.02784 seconds |
+./spec/features/users/user_can_sign_in_spec.rb[1:1]    | passed  | 0.02695 seconds |
+./spec/features/users/user_can_sign_in_spec.rb[1:2]    | passed  | 0.02811 seconds |
+./spec/features/users/user_can_sign_in_spec.rb[1:3]    | passed  | 0.1711 seconds  |
+./spec/models/lease_spec.rb[1:1]                       | passed  | 0.03636 seconds |
+./spec/models/lease_spec.rb[1:2]                       | passed  | 0.00419 seconds |
+./spec/models/lease_spec.rb[1:3]                       | passed  | 0.00348 seconds |
+./spec/models/lease_spec.rb[1:4]                       | passed  | 0.00373 seconds |
+./spec/models/lease_spec.rb[1:5]                       | passed  | 0.00795 seconds |
+./spec/models/lease_spec.rb[1:6]                       | passed  | 0.0015 seconds  |
+./spec/models/lease_spec.rb[1:7]                       | passed  | 0.01156 seconds |
+./spec/models/lease_spec.rb[1:8]                       | passed  | 0.00163 seconds |
+./spec/models/lease_spec.rb[1:9]                       | passed  | 0.00936 seconds |
+./spec/models/lease_spec.rb[1:10]                      | passed  | 0.00968 seconds |
+./spec/models/lease_user_spec.rb[1:1]                  | pending | 0.00001 seconds |
+./spec/models/user_spec.rb[1:1]                        | passed  | 0.00337 seconds |
+./spec/models/user_spec.rb[1:2]                        | passed  | 0.00431 seconds |
+./spec/models/user_spec.rb[1:3]                        | passed  | 0.0039 seconds  |
+./spec/models/user_spec.rb[1:4]                        | passed  | 0.00581 seconds |
+./spec/models/user_spec.rb[1:5]                        | passed  | 0.01351 seconds |
+./spec/models/user_spec.rb[1:6]                        | passed  | 0.01846 seconds |
+./spec/models/user_spec.rb[1:7]                        | passed  | 0.00636 seconds |
+./spec/models/user_spec.rb[1:8]                        | passed  | 0.00616 seconds |

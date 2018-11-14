@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181113203055) do
+ActiveRecord::Schema.define(version: 20181114015802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "lease_users", force: :cascade do |t|
+    t.bigint "lease_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lease_id"], name: "index_lease_users_on_lease_id"
+    t.index ["user_id"], name: "index_lease_users_on_user_id"
+  end
+
+  create_table "leases", force: :cascade do |t|
+    t.decimal "amount", precision: 10, scale: 2
+    t.date "starts_at"
+    t.date "ends_at"
+    t.integer "payment_day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_leases_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -25,4 +45,7 @@ ActiveRecord::Schema.define(version: 20181113203055) do
     t.integer "role", default: 0
   end
 
+  add_foreign_key "lease_users", "leases"
+  add_foreign_key "lease_users", "users"
+  add_foreign_key "leases", "users"
 end
