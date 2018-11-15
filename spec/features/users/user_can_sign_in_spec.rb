@@ -6,9 +6,19 @@ RSpec.feature 'With valid user:', type: :feature do
     visit '/login'
     fill_in('email', with: @user.email)
     fill_in('password', with: @user.password)
+    select('tenant', from: 'role')
     click_on('Log In')
     expect(page).to have_content("Welcome back, #{@user.name}!")
     expect(current_path).to eq('/')
+  end
+  it "can't log in with wrong role" do
+    visit '/login'
+    fill_in('email', with: @user.email)
+    fill_in('password', with: @user.password)
+    select('manager', from: 'role')
+    click_on('Log In')
+    expect(page).to have_content("Password or email not recognized")
+    expect(current_path).to eq('/login')
   end
   it "can't login in with wrong password" do
     visit '/login'

@@ -6,6 +6,7 @@ RSpec.feature 'On user creation:', type: :feature do
       fill_in("user_email", with: 'test@test.com')
       fill_in("user_password", with: 'password')
       fill_in("user_password_confirmation", with: 'password')
+      select('tenant', from: 'user_role')
       click_on("Signup")
 
       expect(User.last.first_name).to eq('test')
