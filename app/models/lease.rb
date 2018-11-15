@@ -8,11 +8,23 @@ class Lease < ApplicationRecord
   
   has_one :owner_user, class_name: 'LeaseUser'
   has_one :owner, -> { where(role: 'owner')}, through: :owner_user, source: 'user'
-  has_many :managers, -> { where(role: 'managers')}, through: :lease_users, class_name: 'User'
-  has_many :tenants, -> { where(role: 'tenants')}, through: :lease_users, class_name: 'User'
+  has_many :managers, -> { where(role: 'manager')}, through: :lease_users, source: 'user', class_name: 'User'
+  has_many :tenants, -> { where(role: 'tenant')}, through: :lease_users, source: 'user'
+  has_many :invited_users
   
   def payment_day_this_month(month = Date.today.month)
     payment_day < Time.days_in_month(month) ? payment_day : Time.days_in_month(month)
+  end
+  
+  def add_user(role, email)
+    user = User.find_by_role_and_email(role.to_s, email)
+    if !user
+      invited_users.create(email: email, role: role)
+    elsif role == 'manager'
+      managers << user
+    elsif role == 'tenant'
+      tenants << user
+    end
   end
   
 end

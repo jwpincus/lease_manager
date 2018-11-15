@@ -45,6 +45,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry', platforms: [:mri, :mingw, :x64_mingw]
   gem 'simplecov'
+  gem 'faker'
 end
 
 group :development do

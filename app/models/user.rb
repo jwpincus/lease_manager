@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: { scope: :role }
   validates :password, confirmation: true
   has_secure_password
   enum role: [:tenant, :manager, :owner]
@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :leases, through: :lease_users
 
   def set_default_role
-    self.role ||= :user
+    self.role ||= :tenant
   end
   
   def name

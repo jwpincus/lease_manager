@@ -1,5 +1,7 @@
 require 'factory_bot'
 require 'simplecov'
+require 'faker'
+
 SimpleCov.start 'rails'
 RSpec.configure do |config|
 

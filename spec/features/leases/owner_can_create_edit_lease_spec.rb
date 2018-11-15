@@ -1,7 +1,10 @@
-RSpec.feature 'Owner can:', type: :feature do
+RSpec.feature 'Owner can: ', type: :feature do
   let(:owner) { create(:owner) }
   let(:tenant) { create(:user) }
-  scenario 'Owner can create a new lease' do
+  let(:lease) { create(:lease) }
+  let(:manager) { create(:manager) }
+  
+  scenario 'create a new lease' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(owner)
     visit '/leases/new'
     expect(current_path).to eq('/leases/new')
@@ -16,7 +19,47 @@ RSpec.feature 'Owner can:', type: :feature do
     
     expect(Lease.last.address_line_1).to eq('Unit 123')
     expect(Lease.last.owner.id).to eq(owner.id)
+    expect(current_path).to eq(lease_path(Lease.last))
   end
+  
+  scenario 'add a manager with an account to a lease' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(lease.owner)
+    visit lease_path(lease)
+    fill_in('manager_email', with: manager.email)
+    click_on('Add Manager to Lease')
+    expect(current_path).to eq(lease_path(lease))
+    expect(page.body).to include(manager.name)
+  end
+  
+  scenario 'add a manager without an account to a lease' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(lease.owner)
+    manager_email = Faker::Internet.unique.email
+    visit lease_path(lease)
+    fill_in('manager_email', with: manager_email)
+    click_on('Add Manager to Lease')
+    expect(current_path).to eq(lease_path(lease))
+    expect(page.body).to include(manager_email)
+  end
+  
+  scenario 'add a tenant with an account to a lease' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(lease.owner)
+    visit lease_path(lease)
+    fill_in('tenant_email', with: tenant.email)
+    click_on('Add Tenant to Lease')
+    expect(current_path).to eq(lease_path(lease))
+    expect(page.body).to include(tenant.name)
+  end
+  
+  scenario 'add a tenant without an account to a lease' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(lease.owner)
+    tenant_email = Faker::Internet.unique.email
+    visit lease_path(lease)
+    fill_in('tenant_email', with: tenant_email)
+    click_on('Add Tenant to Lease')
+    expect(current_path).to eq(lease_path(lease))
+    expect(page.body).to include(tenant_email)
+  end
+  
   
   
 end

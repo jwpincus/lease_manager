@@ -14,7 +14,6 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:last_name) }
     it { should validate_presence_of(:email) }
     it { should validate_confirmation_of(:password) }
-    it { should validate_uniqueness_of(:email) }
     it "should have a role" do
       user = create(:user)
       expect(user.role).to eq('tenant')
