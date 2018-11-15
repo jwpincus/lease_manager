@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :invited_user do
-    lease nil
-    role "MyString"
-    email "MyString"
+    lease
+    role 'tenant'
+    email Faker::Internet.unique.email
   end
   
   factory :lease_user do
