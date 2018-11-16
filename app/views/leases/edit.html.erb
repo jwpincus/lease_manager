@@ -1,0 +1,32 @@
+<h1>Edit Lease</h1>
+
+<%= form_for @lease do |f| %>
+  <div class="form-group">
+    Address Line 1: <%= f.text_field :address_line_1, class: 'form-control' %><br>
+  </div>
+  <div class="form-group">
+    Address Line 2: <%= f.text_field :address_line_2, class: 'form-control' %><br>
+  </div>
+  <div class="form-group">
+    City: <%= f .text_field :city, class: 'form-control' %><br>
+  </div>
+  <div class="form-group">
+    State: <%= f.text_field :state, class: 'form-control' %><br>
+  </div>
+  <div class="form-group">
+    Zip: <%= f.text_field :zip, class: 'form-control' %><br>
+  </div>
+  <div class="form-group">
+    Start Date: <%= f.date_select :starts_at, class: 'form-control' %><br>
+  </div>
+  <div class="form-group">
+    End Date: <%= f.date_select :ends_at, class: 'form-control' %><br>
+  </div>
+  <div class="form-group">
+    Rent Amount: <%= f.number_field :amount, class: 'form-control', step: 0.01 %><br>
+  </div>
+  <div class="form-group">
+    Rent Payment Day (will default to last day of month for months shorter than 31 days): <%= f.select :payment_day, Array(1..31), {}, {class: 'form-control'} %><br>
+  </div>
+  <%= f.submit "Save Changes", class: 'btn btn-success' %>
+  <% end %>

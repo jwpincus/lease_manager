@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181115012727) do
+ActiveRecord::Schema.define(version: 20181116195507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "acceptances", force: :cascade do |t|
+    t.boolean "accepted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "invited_users", force: :cascade do |t|
     t.bigint "lease_id"
@@ -29,6 +35,8 @@ ActiveRecord::Schema.define(version: 20181115012727) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "acceptance_id"
+    t.index ["acceptance_id"], name: "index_lease_users_on_acceptance_id"
     t.index ["lease_id"], name: "index_lease_users_on_lease_id"
     t.index ["user_id"], name: "index_lease_users_on_user_id"
   end
@@ -58,6 +66,7 @@ ActiveRecord::Schema.define(version: 20181115012727) do
   end
 
   add_foreign_key "invited_users", "leases"
+  add_foreign_key "lease_users", "acceptances"
   add_foreign_key "lease_users", "leases"
   add_foreign_key "lease_users", "users"
 end

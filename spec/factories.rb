@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :acceptance do
+    accepted false
+  end
   factory :invited_user do
     lease
     role 'tenant'

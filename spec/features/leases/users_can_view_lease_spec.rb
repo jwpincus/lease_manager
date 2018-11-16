@@ -1,4 +1,4 @@
-RSpec.feature 'Owner can: ', type: :feature do
+RSpec.feature 'User can: ', type: :feature do
   let(:owner) { create(:owner) }
   let(:tenant) { create(:user) }
   let(:lease) { create(:lease) }
@@ -19,6 +19,7 @@ RSpec.feature 'Owner can: ', type: :feature do
     expect(page.body).to have_content(lease.address_line_1)
     visit lease_path(lease)
     expect(page.body).to have_content(lease.address_line_1)
+    expect(page.body).to_not have_content('Add Manager')
   end
   
   scenario 'tenant can view lease' do
@@ -28,6 +29,8 @@ RSpec.feature 'Owner can: ', type: :feature do
     expect(page.body).to have_content(lease.address_line_1)
     visit lease_path(lease)
     expect(page.body).to have_content(lease.address_line_1)
+    expect(page.body).to_not have_content('Add Manager')
+    expect(page.body).to_not have_content('Add Tenant')
   end
   
   scenario 'unassociated user can\'t see lease' do
