@@ -10,6 +10,15 @@
         <tr>
           <td> <%= l.address_line_1 %><br><%= l.address_line_2 %><br><%= l.city %> </td>
         </tr>
+        <tr>
+          <% if current_user.tenant? && !current_user.find_acceptance_by_lease(l).accepted %>
+            <%= form_tag lease_accept_lease_path(l), method: :put do %>
+              <%= submit_tag 'Accept Lease', class: 'btn btn-success' %>
+            <% end %>
+          <% elsif current_user.tenant? && current_user.find_acceptance_by_lease(l).accepted %>
+            <b>Lease Accepted</b>
+          <% end %>
+        </tr>
       <% end %>
     </tbody>
   </table>

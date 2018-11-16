@@ -31,4 +31,8 @@ class User < ApplicationRecord
     lease_users.find_by_lease_id(lease.id).acceptance.update(accepted: true)
   end
 
+  def find_acceptance_by_lease(lease)
+    lease_users.find_by_lease_id(lease.id).acceptance
+  end
+
 end

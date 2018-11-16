@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  resources :leases
+  resources :leases do
+    put '/accept-lease', to: 'leases#accept_lease'
+  end
 end

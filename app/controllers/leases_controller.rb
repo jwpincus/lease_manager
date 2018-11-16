@@ -42,6 +42,10 @@ class LeasesController < ApplicationController
     redirect_to lease_path(@lease)
   end
 
+  def accept_lease
+    current_user.find_acceptance_by_lease(Lease.find(params[:lease_id])).update(accepted: true)
+  end
+
   private
 
   def lease_params
