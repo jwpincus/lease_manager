@@ -27,4 +27,8 @@ class User < ApplicationRecord
     [first_name.capitalize, last_name.capitalize].join(' ')
   end
 
+  def accept_lease!(lease)
+    lease_users.find_by_lease_id(lease.id).acceptance.update(accepted: true)
+  end
+
 end

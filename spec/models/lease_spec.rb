@@ -25,4 +25,10 @@ RSpec.describe Lease, type: :model do
     lease = Lease.new(payment_day: 31)
     expect(lease.payment_day_this_month(2)).to eq(28)
   end
+
+  it "should create acceptances when a tenant is added" do
+    lease = create(:lease)
+    lease.tenants = create_list(:user, 2)
+    expect(lease.acceptances.count).to eq(2)
+  end
 end

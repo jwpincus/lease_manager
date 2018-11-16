@@ -7,12 +7,12 @@ FactoryBot.define do
     role 'tenant'
     email Faker::Internet.unique.email
   end
-  
+
   factory :lease_user do
     lease nil
     user nil
   end
-  
+
   factory :lease do
     amount '2000'
     starts_at "2018-11-13"
@@ -25,11 +25,13 @@ FactoryBot.define do
     state "WA"
     association :owner, factory: :owner
   end
-  
+
   factory :user do
     first_name Faker::Name.unique.first_name
     last_name Faker::Name.unique.first_name
-    email Faker::Internet.unique.email
+    sequence :email do
+      Faker::Internet.unique.email
+    end
     password "password"
     factory :manager do
       first_name Faker::Name.unique.first_name

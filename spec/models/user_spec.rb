@@ -23,7 +23,7 @@ RSpec.describe User, type: :model do
       user = create(:manager)
       expect(user.role).to eq('manager')
     end
-    
+
     it "should check for invites on creation" do
       invited_user = create(:invited_user)
       lease = invited_user.lease
@@ -37,6 +37,15 @@ RSpec.describe User, type: :model do
         )
       expect(user.leases.first).to eq(lease)
       expect(InvitedUser.where(id:invited_user.id).first).to eq(nil)
+    end
+
+    it "should create acceptances when a tenant is added to lease" do
+      lease = create(:lease)
+      lease.tenants = create_list(:user, 2)
+      user1 = lease.tenants.first
+      expect(user1.lease_users.find_by_lease_id(lease.id).acceptance.accepted).to be_falsey
+      user1.accept_lease!(lease)
+      expect(user1.lease_users.find_by_lease_id(lease.id).acceptance.accepted).to be_truthy
     end
 
 end
