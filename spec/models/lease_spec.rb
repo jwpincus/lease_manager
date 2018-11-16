@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Lease, type: :model do
-  
+
   it "is valid with valid attributes" do
     owner = create(:owner)
     expect(owner.leases.new(
@@ -18,6 +18,7 @@ RSpec.describe Lease, type: :model do
   it { should have_one(:owner)}
   it { should have_many(:managers)}
   it { should have_many(:tenants)}
+  it { should have_many(:acceptances)}
   it { should validate_numericality_of(:payment_day).is_less_than_or_equal_to(31)}
   it { should validate_numericality_of(:payment_day).is_greater_than_or_equal_to(1)}
   it "can figure out the payment date for shorter months" do
