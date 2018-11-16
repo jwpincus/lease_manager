@@ -1,4 +1,9 @@
 class LeasesController < ApplicationController
+  before_action :user_signed_in?
+  
+  def index
+    @leases = current_user.leases
+  end
   
   def new
     redirect_to root_path if !current_user || !current_user.role == 'owner'
@@ -16,13 +21,13 @@ class LeasesController < ApplicationController
   end
   
   def show
-    @lease =  Lease.find(params[:id])
-    redirect_to root_path if @lease.owner.id != current_user.id
+    @lease = current_user.leases.find_by_id(params[:id])
+    redirect_to root_path if @lease.nil?
   end
   
   def update
-    lease =  Lease.find(params[:id])
-    redirect_to root_path if Lease.find(params[:id]).owner.id != current_user.id
+    lease = current_user.leases.find_by_id(params[:id])
+    redirect_to root_path if lease.nil?
     if params[:manager_email]
       lease.add_user('manager', params[:manager_email])
     elsif params[:tenant_email]

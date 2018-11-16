@@ -22,11 +22,15 @@
       <% @lease.managers.each do |m| %>
         <p> <%= m.name %> <%= m.email %> </p>
       <% end %>
-      <p><b>Add by Email:</b></p>
-      <%= form_tag lease_path, method: :put do %>
-        <%= text_field_tag :manager_email %>
-        <%= submit_tag 'Add Manager to Lease' %>
+      
+      <% if current_user.owner? %>
+        <p><b>Add by Email:</b></p>
+        <%= form_tag lease_path, method: :put do %>
+          <%= text_field_tag :manager_email %>
+          <%= submit_tag 'Add Manager to Lease' %>
+        <% end %>
       <% end %>
+        
     </div>
   </div>
   
@@ -36,10 +40,12 @@
       <% @lease.tenants.each do |t| %>
         <p> <%= t.name %> <%= t.email %> </p>
       <% end %>
-      <p><b>Add by Email:</b></p>
-      <%= form_tag lease_path, method: :put do %>
-        <%= text_field_tag :tenant_email %>
-        <%= submit_tag 'Add Tenant to Lease' %>
+      <% if current_user.owner? %>
+        <p><b>Add by Email:</b></p>
+        <%= form_tag lease_path, method: :put do %>
+          <%= text_field_tag :tenant_email %>
+          <%= submit_tag 'Add Tenant to Lease' %>
+        <% end %>
       <% end %>
     </div>
   </div>

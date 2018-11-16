@@ -1,0 +1,16 @@
+<div class="col">
+  <h1>Your leases</h1>
+  <table class="table">
+    <thead>
+      <td>Address</td>
+      <td></td>
+    </thead>
+    <tbody>
+      <% @leases.each do |l| %>
+        <tr>
+          <td> <%= l.address_line_1 %><br><%= l.address_line_2 %><br><%= l.city %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

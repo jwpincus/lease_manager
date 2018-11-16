@@ -60,6 +60,4 @@ RSpec.feature 'Owner can: ', type: :feature do
     expect(page.body).to include(tenant_email)
   end
   
-  
-  
 end

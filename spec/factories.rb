@@ -15,6 +15,11 @@ FactoryBot.define do
     starts_at "2018-11-13"
     ends_at "2019-11-13"
     payment_day 1
+    address_line_1 "123 Main st"
+    address_line_2 "unit 345"
+    city "Seattle"
+    zip "98122"
+    state "WA"
     association :owner, factory: :owner
   end
   
