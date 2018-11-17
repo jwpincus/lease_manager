@@ -9,17 +9,17 @@
       <% @leases.each do |l| %>
         <tr>
           <td> <%= l.address_line_1 %><br><%= l.address_line_2 %><br><%= l.city %> <br> <%= link_to 'Lease Details', lease_path(l) %> </td>
-        </tr>
-        <tr>
-          <% if current_user.tenant? && !current_user.find_acceptance_by_lease(l).accepted %>
+          <td>
+            <% if current_user.tenant? && !current_user.find_acceptance_by_lease(l).accepted %>
             <%= form_tag lease_accept_lease_path(l), method: :put do %>
-              <%= submit_tag 'Accept Lease', class: 'btn btn-success' %>
+            <%= submit_tag 'Accept Lease', class: 'btn btn-success' %>
             <% end %>
-          <% elsif current_user.tenant? && current_user.find_acceptance_by_lease(l).accepted %>
+            <% elsif current_user.tenant? && current_user.find_acceptance_by_lease(l).accepted %>
             <b>Lease Accepted</b>
-          <% elsif !current_user.tenant? && l.updatable? %>
+            <% elsif !current_user.tenant? && l.updatable? %>
             <%= link_to 'Edit Lease', edit_lease_path(l), class: 'btn btn-success' %>
-          <% end %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

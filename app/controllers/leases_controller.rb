@@ -18,7 +18,7 @@ class LeasesController < ApplicationController
       redirect_to lease_path(@lease)
     else
       flash[:danger] = @lease.errors.full_messages.join(", ")
-      redirect_back
+      redirect_back fallback_location: new_lease_path
     end
   end
 
@@ -44,6 +44,7 @@ class LeasesController < ApplicationController
 
   def accept_lease
     current_user.find_acceptance_by_lease(Lease.find(params[:lease_id])).update(accepted: true)
+    redirect_back fallback_location: lease_path(params[:lease_id])
   end
 
   private

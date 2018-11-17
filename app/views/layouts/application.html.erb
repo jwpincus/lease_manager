@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Playground</title>
+    <title>Lease Manager</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,37 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="<%= root_path %>">Lease Manager</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <% if current_user %>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= logout_path %>">Logout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= leases_path %>">My Leases</a>
+            </li>
+            <% if current_user.owner? %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= new_lease_path %>">New Lease</a>
+              </li>
+            <% end %>
+          <% end %>
+          <% if !current_user %>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= login_path %>">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= signup_path %>">New Account</a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
     <div class="flash">
       <% flash.each do |klass, msg| %>
       <div class="alert alert-<%= klass %>">
