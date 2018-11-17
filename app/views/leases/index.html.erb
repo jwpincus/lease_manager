@@ -8,7 +8,7 @@
     <tbody>
       <% @leases.each do |l| %>
         <tr>
-          <td> <%= l.address_line_1 %><br><%= l.address_line_2 %><br><%= l.city %> </td>
+          <td> <%= l.address_line_1 %><br><%= l.address_line_2 %><br><%= l.city %> <br> <%= link_to 'Lease Details', lease_path(l) %> </td>
         </tr>
         <tr>
           <% if current_user.tenant? && !current_user.find_acceptance_by_lease(l).accepted %>

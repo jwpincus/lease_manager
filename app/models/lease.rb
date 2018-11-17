@@ -30,7 +30,7 @@ class Lease < ApplicationRecord
   end
 
   def accepted_by_all?
-    acceptances.pluck(:accepted).uniq == [true]
+    (acceptances.pluck(:accepted).uniq == [true]) && (invited_users.where(role: 'tenant').count == 0)
   end
 
   # extra callback method to ensure that leases can never be updated after acceptance, controller check exists as well
