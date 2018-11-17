@@ -12,10 +12,10 @@ Schema Spec:
 9. A Tenant can accept a Lease that they have been added to.
 
 Behavior Spec:
-1. When all Tenants have accepted a Lease, the Lease becomes “binding” and is no longer editable.
+1. When all Tenants have accepted a Lease, the Lease becomes “binding” and is no longer editable. 
 2. Users can view a list of their contacts (all other users connected to that user through a lease).
 3. Every month, on the rent payment day for each binding lease, Tenants receive an email reminding them that rent is due.
 4. Two months before the end date for each binding lease, the Owners and Managers receive an email reminding them that the lease is ending soon.
 5. Owners and Managers can view a financial dashboard by calendar year:
     • For each month in that calendar year, they see a summary of the rent collected or to be collected in that month, and they can filter by lease or see a total across all leases.
-6. Rent proration: for any lease that starts and/or ends in the middle of a month, the rent amount should be prorated based on the number of days in that month. 
+6. Rent proration: for any lease that starts and/or ends in the middle of a month, the rent amount should be prorated based on the number of days in that month.

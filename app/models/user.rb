@@ -8,8 +8,8 @@ class User < ApplicationRecord
   after_initialize :set_default_role, if: :new_record?
   after_initialize :check_for_invites, if: :new_record?
   has_many :lease_users
-  has_many :leases, through: :lease_users
-  has_many :acceptances, through: :lease_users
+  has_many :leases, through: :lease_users, source: 'lease'
+  has_many :acceptances, through: :lease_users, source: 'acceptance'
 
   def set_default_role
     self.role ||= :tenant

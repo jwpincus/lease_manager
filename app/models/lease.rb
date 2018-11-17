@@ -12,6 +12,7 @@ class Lease < ApplicationRecord
   has_many :tenants, -> { where(role: 'tenant')}, through: :lease_users, source: 'user'
   has_many :invited_users
   has_many :acceptances, through: :lease_users
+  before_update :updatable?
 
   def payment_day_this_month(month = Date.today.month)
     payment_day < Time.days_in_month(month) ? payment_day : Time.days_in_month(month)
@@ -26,6 +27,15 @@ class Lease < ApplicationRecord
     elsif role == 'tenant'
       tenants << user
     end
+  end
+
+  def accepted_by_all?
+    acceptances.pluck(:accepted).uniq == [true]
+  end
+
+  # extra callback method to ensure that leases can never be updated after acceptance, controller check exists as well
+  def updatable?
+    !accepted_by_all?
   end
 
 end

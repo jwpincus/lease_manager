@@ -36,14 +36,18 @@ FactoryBot.define do
     factory :manager do
       first_name Faker::Name.unique.first_name
       last_name Faker::Name.unique.first_name
-      email Faker::Internet.unique.email
+      sequence :email do
+        Faker::Internet.unique.email
+      end
       password "password"
       role 'manager'
     end
     factory :owner do
       first_name Faker::Name.unique.first_name
       last_name Faker::Name.unique.first_name
-      email Faker::Internet.unique.email
+      sequence :email do
+        Faker::Internet.unique.email
+      end
       password "password"
       role 'owner'
     end

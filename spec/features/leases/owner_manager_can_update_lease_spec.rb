@@ -6,7 +6,8 @@ RSpec.feature 'Owner can: ', type: :feature do
 
   scenario 'owner can edit lease' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(lease.owner)
-    visit edit_lease_path(lease)
+    visit leases_path
+    click_on('Edit Lease')
     fill_in('lease_address_line_1', with: 'test update')
     click_on("Save Changes")
     lease.reload
@@ -18,7 +19,8 @@ RSpec.feature 'Owner can: ', type: :feature do
   scenario 'manager can edit lease' do
     lease.managers << manager
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(manager)
-    visit edit_lease_path(lease)
+    visit leases_path
+    click_on('Edit Lease')
     fill_in('lease_address_line_1', with: 'test update')
     click_on("Save Changes")
     lease.reload

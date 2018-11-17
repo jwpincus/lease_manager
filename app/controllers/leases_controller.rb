@@ -1,6 +1,7 @@
 class LeasesController < ApplicationController
   before_action :user_signed_in?
   before_action :manager_or_owner_auth, only: [:update, :edit]
+  before_action :lease_accepted_by_all?, only: [:update, :edit]
 
   def index
     @leases = current_user.leases
@@ -28,7 +29,6 @@ class LeasesController < ApplicationController
 
   def edit
     redirect_to lease_path(lease) if current_user.tenant?
-    @lease = current_user.leases.find_by_id(params[:id])
   end
 
   def update
@@ -64,6 +64,14 @@ class LeasesController < ApplicationController
   def manager_or_owner_auth
     @lease = current_user.leases.find_by_id(params[:id])
     redirect_to lease_path(@lease) if current_user.tenant?
+  end
+
+  def lease_accepted_by_all?
+    @lease = current_user.leases.find_by_id(params[:id])
+    if @lease && @lease.accepted_by_all?
+      flash[:danger] = "The lease has been accepted by all tenants. It can no longer be updated"
+      redirect_to lease_path @lease
+    end
   end
 
 end

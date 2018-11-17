@@ -17,6 +17,8 @@
             <% end %>
           <% elsif current_user.tenant? && current_user.find_acceptance_by_lease(l).accepted %>
             <b>Lease Accepted</b>
+          <% elsif !current_user.tenant? && l.updatable? %>
+            <%= link_to 'Edit Lease', edit_lease_path(l), class: 'btn btn-success' %>
           <% end %>
         </tr>
       <% end %>
