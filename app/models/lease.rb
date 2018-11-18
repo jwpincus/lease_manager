@@ -33,9 +33,37 @@ class Lease < ApplicationRecord
     (acceptances.pluck(:accepted).uniq == [true]) && (invited_users.where(role: 'tenant').count == 0)
   end
 
-  # extra callback method to ensure that leases can never be updated after acceptance, controller check exists as well
+  # extra callback method to ensure that leases can never be updated after acceptance, controller check exists as well. A bit unnecessary right now, but can add additional locking factors later
   def updatable?
     !accepted_by_all?
   end
+
+  def revenue_by_all_months
+    months = Hash.new { |hash, key| hash[key] = {} }
+    date_pointer = starts_at.beginning_of_month + 1.month
+    months[starts_at.strftime('%Y')][starts_at.strftime('%B')] = start_month_rent
+    until date_pointer > ends_at
+      months[date_pointer.strftime('%Y')][date_pointer.strftime('%B')] = amount
+      date_pointer = date_pointer + 1.month
+    end
+    months[ends_at.strftime('%Y')][ends_at.strftime('%B')] = last_month_rent
+    return months
+  end
+
+  def start_month_rent
+    return amount if starts_at.day == 1
+    days_in_month = Time.days_in_month(starts_at.month)
+    return (amount * ((days_in_month - starts_at.day).to_d/days_in_month.to_d)).round(2)
+  end
+
+  def last_month_rent
+    days_in_month = Time.days_in_month(ends_at.month)
+    return (amount * (ends_at.day.to_d/days_in_month.to_d)).round(2)
+  end
+
+  def total_revenu
+
+  end
+
 
 end

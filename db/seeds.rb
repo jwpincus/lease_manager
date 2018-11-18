@@ -14,7 +14,6 @@ owner = User.create(
   password_confirmation: 'password',
   role: 'owner'
 )
-
 lease = owner.leases.create(
   amount: '2500',
   starts_at: Date.today + 1.week,
@@ -22,6 +21,17 @@ lease = owner.leases.create(
   payment_day: 1,
   address_line_1: 'Unit 303',
   address_line_2: '1133 18th Ave',
+  city: 'Denver',
+  state: 'CO',
+  zip: '80218'
+)
+lease2 = owner.leases.create(
+  amount: '2000',
+  starts_at: Date.today + 6.months,
+  ends_at: Date.today + 2.year,
+  payment_day: 1,
+  address_line_1: 'Unit 403',
+  address_line_2: '1140 18th Ave',
   city: 'Denver',
   state: 'CO',
   zip: '80218'

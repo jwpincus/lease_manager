@@ -28,6 +28,11 @@
                 <a class="nav-link" href="<%= new_lease_path %>">New Lease</a>
               </li>
             <% end %>
+            <% if !current_user.tenant? %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= financials_path %>">Financial Dashboard</a>
+              </li>
+            <% end %>
           <% end %>
           <% if !current_user %>
             <li class="nav-item">

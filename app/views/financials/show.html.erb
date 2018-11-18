@@ -1,0 +1,23 @@
+<div class="col">
+  <h1>Revenue Detail By Lease</h1>
+    <p><b><%= link_to "#{@lease.address_line_1}, #{@lease.address_line_2} (click for lease details)", lease_path(@lease) %></b></p>
+  <hr class="my-4">
+  <h1>Total Revenue</h1>
+  <% @lease.revenue_by_all_months.each do |year, months| %>
+    <table class="table">
+      <h2> <%= year %> </h2>
+      <thead>
+        <th>Month</th>
+        <th>Expected Revenue</th>
+      </thead>
+      <tbody>
+        <% months.each do |month, revenue| %>
+          <tr>
+            <td> <%= month %> </td>
+            <td> <%= revenue %> </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

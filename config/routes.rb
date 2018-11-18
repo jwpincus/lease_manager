@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :leases do
     put '/accept-lease', to: 'leases#accept_lease'
   end
+
+  resources :financials
 end
