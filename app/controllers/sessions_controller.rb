@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email_and_role(params[:email], params[:role])
     if user && user.authenticate(params[:password])
-      flash[:msg] = "Welcome back, #{user.name}!"
+      flash[:success] = "Welcome back, #{user.name}!"
       session[:user_id] = user.id
       redirect_to root_path
     else
