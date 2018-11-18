@@ -61,9 +61,11 @@ class Lease < ApplicationRecord
     return (amount * (ends_at.day.to_d/days_in_month.to_d)).round(2)
   end
 
-  def total_revenu
-
+  def rent_due(start_of_month = Date.today.beginning_of_month)
+    return 0 if (start_of_month < starts_at.beginning_of_month) || (start_of_month > ends_at.beginning_of_month)
+    return start_month_rent if start_of_month == starts_at.beginning_of_month
+    return last_month_rent if start_of_month == ends_at.beginning_of_month
+    return amount
   end
-
 
 end
