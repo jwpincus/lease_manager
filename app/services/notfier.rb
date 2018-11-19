@@ -4,6 +4,7 @@ class Notifier
 
   def self.notify_daily!
     notify_rent_due
+    notify_lease_expiratons
   end
 
   def self.notify_rent_due
